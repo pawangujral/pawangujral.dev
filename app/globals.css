@@ -12,15 +12,29 @@
   --font-mono: var(--font-jetbrains-mono);
 }
 
-/* Grid background */
+/* Grid background with animated glow */
 body {
   background-color: var(--color-background);
   color: var(--color-foreground);
   font-family: var(--font-sans), system-ui, sans-serif;
   background-image:
-    linear-gradient(rgba(255, 255, 255, 0.02) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(255, 255, 255, 0.02) 1px, transparent 1px);
+    linear-gradient(rgba(0, 229, 160, 0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(0, 229, 160, 0.03) 1px, transparent 1px);
   background-size: 60px 60px;
+  animation: grid-pulse 8s ease-in-out infinite;
+}
+
+@keyframes grid-pulse {
+  0%, 100% {
+    background-image:
+      linear-gradient(rgba(0, 229, 160, 0.03) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(0, 229, 160, 0.03) 1px, transparent 1px);
+  }
+  50% {
+    background-image:
+      linear-gradient(rgba(0, 229, 160, 0.06) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(0, 229, 160, 0.06) 1px, transparent 1px);
+  }
 }
 
 /* Floating gradient orbs */
@@ -30,7 +44,7 @@ body::after {
   position: fixed;
   border-radius: 50%;
   filter: blur(120px);
-  opacity: 0.15;
+  opacity: 0.12;
   z-index: 0;
   pointer-events: none;
 }
@@ -41,7 +55,7 @@ body::before {
   background: var(--color-accent);
   top: -200px;
   right: -200px;
-  animation: float-orb 20s ease-in-out infinite;
+  animation: float-orb-1 20s ease-in-out infinite, orb-glow 4s ease-in-out infinite;
 }
 
 body::after {
@@ -50,13 +64,59 @@ body::after {
   background: #7b61ff;
   bottom: -150px;
   left: -150px;
-  animation: float-orb 25s ease-in-out infinite reverse;
+  animation: float-orb-2 25s ease-in-out infinite, orb-glow 6s ease-in-out infinite 2s;
 }
 
-@keyframes float-orb {
-  0%, 100% { transform: translate(0, 0); }
-  33% { transform: translate(30px, -30px); }
-  66% { transform: translate(-20px, 20px); }
+@keyframes float-orb-1 {
+  0%, 100% { transform: translate(0, 0) scale(1); }
+  25% { transform: translate(60px, -40px) scale(1.1); }
+  50% { transform: translate(-30px, 50px) scale(0.95); }
+  75% { transform: translate(40px, 20px) scale(1.05); }
+}
+
+@keyframes float-orb-2 {
+  0%, 100% { transform: translate(0, 0) scale(1); }
+  25% { transform: translate(-50px, 30px) scale(1.05); }
+  50% { transform: translate(40px, -40px) scale(1.1); }
+  75% { transform: translate(-20px, -30px) scale(0.95); }
+}
+
+@keyframes orb-glow {
+  0%, 100% { opacity: 0.10; }
+  50% { opacity: 0.20; }
+}
+
+/* CRT scan lines */
+.scan-lines {
+  background: repeating-linear-gradient(
+    0deg,
+    transparent,
+    transparent 2px,
+    rgba(0, 0, 0, 0.03) 2px,
+    rgba(0, 0, 0, 0.03) 4px
+  );
+}
+
+/* Horizontal scan beam */
+.scan-lines::after {
+  content: '';
+  position: fixed;
+  left: 0;
+  right: 0;
+  height: 80px;
+  background: linear-gradient(
+    180deg,
+    transparent,
+    rgba(0, 229, 160, 0.015),
+    transparent
+  );
+  animation: scan-beam 8s linear infinite;
+  pointer-events: none;
+}
+
+@keyframes scan-beam {
+  0% { top: -80px; }
+  100% { top: 100vh; }
 }
 
 /* Smooth scrolling */

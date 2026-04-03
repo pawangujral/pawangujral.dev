@@ -6,8 +6,8 @@ import { useRef } from "react";
 
 const quickFacts = [
   { label: "12+", desc: "Years Experience" },
-  { label: "4", desc: "Countries Worked In" },
-  { label: "React / Next.js", desc: "Specialist" },
+  { label: "2", desc: "Countries Worked In" },
+  { label: "React / Next.js / React Native", desc: "Specialist" },
   { label: "H&M", desc: "Currently @" },
 ];
 

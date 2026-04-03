@@ -7,10 +7,12 @@ import Projects from "@/components/Projects";
 import Certifications from "@/components/Certifications";
 import Contact from "@/components/Contact";
 import Footer from "@/components/Footer";
+import BackgroundAnimation from "@/components/BackgroundAnimation";
 
 export default function Home() {
   return (
     <>
+      <BackgroundAnimation />
       <a href="#main" className="skip-to-content">
         Skip to content
       </a>

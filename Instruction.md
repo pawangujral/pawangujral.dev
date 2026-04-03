@@ -58,7 +58,7 @@ Choose ONE of the following based on preference:
   > I'm a Senior Frontend Engineer based in Stockholm, Sweden, with 12+ years of experience building user-centric web and mobile applications. I specialize in scalable frontend architectures, the React ecosystem, and performance-driven development. Currently, I lead architectural decisions and strategic initiatives at H&M's COS global e-commerce platform. I thrive on cross-functional collaboration, mentoring teams, and delivering digital experiences that make a real impact.
 - Include a "quick facts" grid:
   - 12+ Years Experience
-  - 4 Countries Worked In (India → Sweden)
+  - 2 Countries Worked In (India → Sweden)
   - React / Next.js Specialist
   - Currently @ H&M
 
